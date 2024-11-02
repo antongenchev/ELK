@@ -1,0 +1,16 @@
+filebeat.inputs:
+  - type: log
+    enabled: true
+    paths:
+      - /usr/local/apache2/logs/access_log
+      - /usr/local/apache2/logs/error_log
+
+output.elasticsearch:
+  hosts: ["http://elasticsearch:9200"]
+
+setup.kibana:
+  host: "http://kibana:5601"
+
+processors:
+  - add_host_metadata: ~
+  - add_cloud_metadata: ~
